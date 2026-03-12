@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{%- include page/init.html -%}
+<html class='unlogged' lang='{{ language }}' dir='{{ direction }}'>
+{%- include page/head.html -%}
+<!--
+  -->
+<body
+  onload='bootstrap()'
+  onresize='resize()'
+  ononline='online()'
+  onoffline='offline()'
+  onhashchange='onhashchange()'
+  onfocus='focus()'
+  onblur='blur()'
+  class='{{ page.class | append: " " | append: page.default_class | strip }}'>
+{%- include page/header.html -%}
+{%- include page/main.html -%}
+{%- include page/footer.html -%}
+{%- include page/bottom.html -%}
+</body>
+</html>

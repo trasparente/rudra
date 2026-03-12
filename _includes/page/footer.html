@@ -1,0 +1,12 @@
+<footer>
+  <div>
+    <nav>
+      {% assign url = "/site/info/" %}
+      {% assign pushed_at = site.github.public_repositories | where: "full_name", site.github.repository_nwo | first | map: "pushed_at" | first | date_to_rfc822 %}<a href='{{ url | absolute_url }}'{% if page.url == url %} aria-current='page'{% endif %}>Info</a>
+    </nav>
+    <nav>
+      pushed_at {{ pushed_at }}
+      <a href='#top'>Top</a>
+    </nav>
+  </div>
+</footer>

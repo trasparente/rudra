@@ -1,0 +1,30 @@
+timezone: Europe/Rome
+permalink: pretty
+repository: trasparente/rudra
+
+# OPTIONS defaults
+# class: site class
+# language: en
+# direction: ltr
+
+# DEFAULTS
+defaults:
+  - scope:
+      path: ''
+    values:
+      layout: default
+  - scope:
+      path: ''
+      type: posts
+    values:
+      pagination: true
+      aside: true
+
+# COLLECTIONS
+collections:
+  posts:
+    title: Blog
+  docs:
+    title: Docs
+    output: true
+    sort_by: order

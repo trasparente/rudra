@@ -1,0 +1,12 @@
+<nav id='nav-main'>
+
+  <!-- PAGES not in 'assets/' -->
+  {% for link in html_pages %}{% unless link.path contains 'assets/' %}<a class='page-link' href="{{ link.url | absolute_url }}"{% if page.url == link.url %} aria-current="page"{% endif %}{% if link['nav-main-order'] %} style='order: {{ link['nav-main-order'] }}'{% endif %} title='{{ link.description }}'>{{ link.title | default: link.name }}</a>{% endunless %}{% endfor %}
+
+  <!-- COLLECTIONS -->
+  {% for collection in sorted_collections %}{% if collection.docs.size > 0 %}
+  {% assign d = collection.docs[0] %}
+  <a class='collection-link' href="{{ d.url | absolute_url }}"{% if page.url == d.url %} aria-current="page"{% endif %}{% if collection['nav-main-order'] %} style="order: {{ collection['nav-main-order'] }}"{% endif %} title='{{ collection.description }}'>{{ collection.title | default: collection.label }}</a>{% endif %}
+  {% endfor %}
+
+</nav>

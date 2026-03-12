@@ -1,0 +1,78 @@
+.mz
+  margin: 0
+.pz
+  padding: 0
+.mpz
+  @extend .mz, .pz
+
+// DISPLAY
+.hidden
+  display: none
+.wrapper
+  margin: 0 auto
+  padding: 1.5em
+.flex
+  display: flex
+  justify-content: space-between
+  height: 100%
+
+// BACKGROUNDS
+.bg
+  background-color: var(--bg)
+  fill: var(--bg)
+
+// Shades
+@each $name, $value in $shades
+  .bg-#{$name}
+    background-color: var(--#{$name}) !important
+    fill: var(--#{$name})
+
+// Colors
+@each $name, $value in $colors
+  .bg-#{$name}
+    background-color: var(--#{$name}) !important
+    fill: var(--#{$name})
+  .fg-#{$name}
+    color: var(--#{$name}) !important
+    fill: var(--#{$name})
+  .fg-#{$name}-light
+    color: var(--#{$name}-light) !important
+    fill: var(--#{$name}-light)
+  .bg-#{$name}-dark
+    background-color: var(--#{$name}-dark) !important
+    fill: var(--#{$name}-dark)
+  .bg-#{$name}-light
+    background-color: var(--#{$name}-light) !important
+    fill: var(--#{$name}-light)
+
+// FOREGROUNDS
+.fg
+  color: var(--fg)
+  fill: var(--fg)
+.fg-link
+  color: $link
+
+// Shades
+@each $name, $value in $shades
+  .fg-#{$name}
+    color: var(--#{$name}) !important
+    fill: var(--#{$name})
+
+// Colors
+@each $name, $value in $colors
+  .fg-#{$name}
+    color: var(--#{$name})
+    fill: var(--#{$name})
+
+// BORDER
+.border
+  border: 1px solid var(--subtle)
+.border-bottom
+  @extend .border
+  border-width: 0 0 1px 0
+.border-top
+  @extend .border
+  border-width: 1px 0 0 0
+.border-right
+  @extend .border
+  border-width: 0 1px 0 0

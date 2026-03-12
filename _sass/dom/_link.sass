@@ -1,0 +1,14 @@
+a, .link
+  @extend .fg
+  cursor: pointer
+  text-decoration: none
+  &:hover
+    @extend .fg
+    text-decoration: underline
+  &:active
+    @extend .fg-dim
+  &[aria-current='page']
+    @extend .fg-link
+
+#login-button, #logout-button
+  @extend .capitalize

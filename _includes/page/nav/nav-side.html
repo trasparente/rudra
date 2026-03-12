@@ -1,0 +1,5 @@
+{% if page.collection %}{%- assign collection = site.collections | where: 'label', page.collection | first -%}
+<nav id='nav-side'>
+{% for d in collection.docs %}<a class='document-link' href="{{ d.url | absolute_url }}"{% if page.url == d.url %} aria-current="page"{% endif %}{% if d.order %} style="order: {{ d.order }}"{% endif %} title='{{ d.description }}'>{{ d.title }}</a>
+{% endfor %}
+</nav>{% endif %}

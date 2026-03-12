@@ -1,0 +1,19 @@
+\:root
+  color-scheme: dark
+
+  // SHADES: black, subtle, dim, white
+  @each $name, $value in $shades
+    --#{$name}: hsl(#{hue($value)}, #{saturation($value)}, #{lightness($value)})
+
+  // BG FG LINK
+  --bg: var(--black)
+  --fg: var(--white)
+
+  // COLORS
+  @each $name, $value in $colors
+    // Colors
+    --#{$name}: hsl(#{hue($value)}, #{saturation($value)}, #{lightness($value)})
+    // Dark
+    --#{$name}-dark: hsla(#{hue($value)}, #{saturation($value)}, 10%)
+    // Light
+    --#{$name}-light: hsl(#{hue($value)}, #{saturation($value)}, 85%)

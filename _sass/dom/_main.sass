@@ -1,0 +1,13 @@
+main
+  @extend .flex
+  max-width: 100%
+  justify-content: normal
+  #content
+    padding: 1.5em
+    p
+      @extend .fg-dim
+    // Ignore 'aside' and 'pagination' DIVs
+    & >
+      h1, h2, h3
+        &:first-child
+          margin-top: 0

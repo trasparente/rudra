@@ -1,0 +1,28 @@
+console.log 'jq', $.fn.jquery
+
+# Definitions
+win = $ window
+doc = $ document
+html = $ 'html'
+lang = html.attr 'lang'
+bottom = $ '#bottom'
+login_form = $ '#login-form'
+login_popover = $ '#login-popover'
+today = +new Date().setHours 0,0,0,0
+environment = '{{ site.github.environment }}'
+message = 'unlogged'
+github_repo_url = '{{ site.github.api_url }}/repos/{{ site.github.repository_nwo }}'
+
+# Slug strings
+@slugify = (string) -> 
+  return string.toString().toLowerCase().trim()
+    .replace /[^\w\s\.—-]/g, '' # Remove every: not word, space, dot, dashes
+    .replace /[\s\.—-]+/g, '_' # Replaces space, dot, dashes with underscore
+    .replace /^_+|_+$/g, '' # Trim underscore
+
+# Encoding UTF-8 ⇢ base64 
+B64encode = (str) ->
+  btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (match, p1) -> return String.fromCharCode('0x' + p1)))
+# Decoding base64 ⇢ UTF-8
+B64decode = (str) ->
+  decodeURIComponent(atob(str).split('').map((c) -> return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''))
