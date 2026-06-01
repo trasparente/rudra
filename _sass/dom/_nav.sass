@@ -1,12 +1,51 @@
-#nav-main
+#nav-top, #nav-meta
   @extend .flex
   gap: 1em
+  align-items: center
 
 #nav-side
-  @extend .border-right
-  padding: 1.5em
-  width: 10em
-  scrollbar-gutter: stable
-  top: 2em
-  position: sticky
-  overflow: hidden auto
+  @extend .fs-mid
+  // Proper width
+  padding: 1em
+  width: 14em
+  position: fixed
+  top: 4em
+  bottom: 0
+  overflow-y: scroll
+  #nav-side-container
+    @extend .flex
+    flex-direction: column
+    justify-content: flex-start
+    gap: .3em
+
+  // links
+  a, details summary
+    display: block
+    padding: .3em .5em
+    @extend .border-radius-big, .mz
+    color: var(--mid)
+    &[aria-current='page']
+      @extend .fg-link
+    &:hover
+      color: var(--fg)
+      text-decoration: none
+
+  // Details
+  details
+    @extend .mz
+    &:has([aria-current='page']) summary
+      color: var(--fg) !important
+    summary
+      margin-bottom: .3em
+      @extend .capitalize
+      &:hover::after
+        color: var(--fg)
+      &::after
+        right: 0
+    a
+      margin-bottom: .3em
+      margin-left: .5em
+      &[data-day]::after
+        content: attr(data-day)
+        float: right
+        @extend .fs-smaller, .fg-gry

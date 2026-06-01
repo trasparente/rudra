@@ -1,0 +1,29 @@
+<div class='tabs'>
+  <div role='tablist'> 
+    <a href='#' role='tab' title='Page info'>Page</a>
+    <a href='#' role='tab' title='Repository info'>Repository</a>
+    <a href='#' role='tab' title='Gems info'>Versions</a>
+  </div>
+  <div role='tabpanel'>
+{{ metapage | markdownify }}
+  </div>
+  <div role='tabpanel'>
+{{ metarepo | markdownify }}
+  </div>
+  <div role='tabpanel'>
+{{ metapages | markdownify }}
+  </div>
+</div>
+{%- capture api -%}
+`page.meta: true`{:.language-js} will append an `<aside id='meta'>`{:.language-html} element to `<main>`{:.language-html} with existing `front-matter` variables.
+- `page.author`{:.language-js}
+- `page.date`{:.language-js}
+- `page.category`{:.language-js}
+- `page.categories`{:.language-js}
+- `page.tags`{:.language-js}
+- `page.id`{:.language-js}
+- `page.dir`{:.language-js}
+- `page.slug`{:.language-js}
+- `page.collection`{:.language-js}
+- `page.path`{:.language-js}
+{%- endcapture -%}

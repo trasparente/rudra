@@ -1,0 +1,20 @@
+// Switches
+[role='tablist']
+  @extend .flex
+  justify-content: flex-start
+  gap: .3em
+
+[role='tab']
+  @extend .button
+  margin: .5em 0
+
+[role='tabpanel']
+  width: fit-content
+  padding: 1em
+  @extend .border, .border-radius-big
+  border-width: 1px 0 1px 0
+  border-color: var(--gry-dark)
+  > :first-child
+    margin-top: 0
+  > :last-child
+    margin-bottom: 0

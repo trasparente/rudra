@@ -1,14 +1,12 @@
-a, .link
-  @extend .fg
+a, a:visited, .link
+  color: var(--mid)
   cursor: pointer
   text-decoration: none
-  &:hover
-    @extend .fg
-    text-decoration: underline
+  outline: none
+  &[aria-current='page'], .active
+    color: var(--link)
+    border-color: var(--subtle) !important
+  &:hover, &:focus
+    color: var(--fg)
   &:active
-    @extend .fg-dim
-  &[aria-current='page']
-    @extend .fg-link
-
-#login-button, #logout-button
-  @extend .capitalize
+    color: var(--mid) !important

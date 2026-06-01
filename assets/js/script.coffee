@@ -7,3 +7,7 @@
 {% include scripts/ajax.coffee %}
 {% include scripts/auth.coffee %}
 {% include scripts/bootstrap.coffee %}
+{% include scripts/datetime.coffee %}
+{% include scripts/tabs.coffee %}
+{% include scripts/filter.coffee %}
+{% include scripts/forms.coffee %}

@@ -1,0 +1,17 @@
+ul
+  list-style-type: disc
+  margin-block: .5em
+ul, dd
+  padding-left: 1.5em
+  margin-inline: 0
+
+li, dd
+  @extend .fs-mid
+li + li, dd + dt, dt + dd
+  margin-top: .2em
+li ul
+  @extend .fg-mid
+  margin-top: .2em
+
+dl dt
+  font-weight: bold

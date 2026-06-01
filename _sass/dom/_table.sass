@@ -1,0 +1,26 @@
+table
+  border-spacing: 0
+  border-collapse: separate
+  margin-block: 1em
+  td, th
+    @extend .fs-mid
+    padding: .3em .5em
+  tbody td, thead th
+    @extend .border-bottom
+  tfoot tr
+    @extend .fg-dim
+  thead th
+    @extend .fg-dim, .ff-monospace, .fs
+    border-color: var(--dim)
+    font-variant: small-caps
+    font-weight: normal
+  tbody tr:last-child td
+    border-color: var(--dim)
+  // Headless table, no <thead>
+  tbody:first-child tr:first-child td
+    border-width: 1px 0 1px 0
+    border-top-color: var(--dim)
+
+  // Empty table
+  td.only-child
+    text-align: center

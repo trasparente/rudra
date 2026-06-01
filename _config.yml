@@ -8,23 +8,74 @@ repository: trasparente/rudra
 # direction: ltr
 
 # DEFAULTS
+# values attached to pages
 defaults:
+  # Every page
   - scope:
       path: ''
     values:
       layout: default
+      logo: true
+      meta: true
+      pagination: true
+  # Docs
+  - scope:
+      path: ''
+      type: docs
+    values:
+      sort_by: order
+  # Posts
   - scope:
       path: ''
       type: posts
     values:
-      pagination: true
-      aside: true
+      sort_by: date
 
 # COLLECTIONS
 collections:
   posts:
     title: Blog
+    permalink: /:categories/:title/
+    # order: 1
   docs:
     title: Docs
     output: true
-    sort_by: order
+    # order: 3
+
+# Forms
+fields:
+  hidden:
+    value: text
+    slug: text
+  text:
+    value: text
+    autocomplete: text
+    pattern: text
+    placeholder: text
+    required: checkbox
+    disabled: checkbox
+  number:
+    value: number
+    min: number
+    max: number
+    step: number
+    disabled: checkbox
+    required: checkbox
+  date:
+    value: text
+    disabled: checkbox
+    required: checkbox
+  select:
+    value: text
+    disabled: checkbox
+    required: checkbox
+    multiple: checkbox
+    size: number
+  checkbox:
+    value: text
+    checked: checkbox
+    required: checkbox
+  radio:
+    value: text
+    required: checkbox
+    disabled: checkbox

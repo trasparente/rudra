@@ -1,0 +1,17 @@
+#content .pagination
+  @extend .flex, .fs-small, .fg-dim
+  margin-top: 2em
+  padding-block: 1em
+  // LINKS
+  a[rel]
+    @extend .button
+    &::before,
+    &::after
+      @extend .fs-up
+      font-weight: normal
+  a[rel='next']::after
+    content: "\203a"
+    margin-left: .3em
+  a[rel='prev']::before
+    content: "\2039"
+    margin-right: .3em

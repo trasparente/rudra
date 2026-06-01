@@ -8,6 +8,7 @@
   // BG FG LINK
   --bg: var(--black)
   --fg: var(--white)
+  --link: #{$link}
 
   // COLORS
   @each $name, $value in $colors
@@ -17,3 +18,12 @@
     --#{$name}-dark: hsla(#{hue($value)}, #{saturation($value)}, 10%)
     // Light
     --#{$name}-light: hsl(#{hue($value)}, #{saturation($value)}, 85%)
+
+  // NEON
+  @each $name, $value in $neon
+    // Colors
+    --#{$name}: hsl(#{hue($value)}, #{saturation($value)}, #{lightness($value)})
+    // Dark
+    --#{$name}-dark: hsla(#{hue($value)}, #{saturation($value)}, 10%)
+    // Light
+    --#{$name}-light: hsl(#{hue($value)}, #{saturation($value)}, 80%)

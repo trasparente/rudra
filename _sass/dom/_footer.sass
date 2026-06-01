@@ -1,4 +1,14 @@
 footer
+  position: relative
   @extend .bg, .border-top
   & > div
-    @extend .wrapper, .flex
+    @extend .wrapper, .flex, .fg-mid, .fs-mid
+    nav
+      &:first-child
+        @extend .flex
+        gap: 1em
+      &:last-child
+        text-align: right
+  a
+    &:hover, &:focus
+      @extend .fg

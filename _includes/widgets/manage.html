@@ -1,0 +1,44 @@
+<!-- FORM -->
+{%- assign counter = counter | plus: 1 -%}
+<fieldset class='input {{ include.class | strip }}'><legend>Manage</legend>
+<form id='input-{{ counter }}' class='{{ 'input prevent reset admin' | append: include.class | strip }}'>
+<div data-input='text' data-id='file_url'><label for='file_url'>file_url</label><input type="text" id="file_url" name="file_url" required="" pattern='[\w]+\.(json|yml|yaml)'><span class='description'>{{ 'File URL inside `_data`<br>Extensions `json`,`yml`,`yaml`' | newline_to_br | markdownify | replace: 'p>','span>' }}</span></div>
+  <!-- Buttons -->
+  <div data-input="buttons">
+    <input type='submit' title='Send form' name='submit' value='SAVE'>
+    <input type='reset' title='Reset to default' name='reset' value='RESET'>
+  </div>
+  <div data-input="message" role='status'><code title='file-url'></code></div>
+
+<!-- End form -->
+</form>
+</fieldset>
+{%- capture api -%}
+Render a form to create or edit a schema data file to display a input form, with a `file-url` for the destination file and type and options for the input fields.  
+
+- `include.file_url`{:.language-coffeescript}: to manage a specific file.
+- `include.class`{:.language-coffeescript}: class added to the form.  
+
+```liquid
+{% raw %}{% include widgets/manage.html file_url='forms/input.yml' %}{% endraw %}
+```
+
+**yaml object to Forms**
+
+Reserved fields
+
+- `file_url`: complete data file url
+
+Fields options and values
+
+- type
+  - All types
+    - label (text)
+    - description (text)
+  - hidden
+  - date
+  - radio
+    - options (array of id)
+    - descriptions (array of text)
+
+{%- endcapture -%}

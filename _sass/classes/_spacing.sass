@@ -1,0 +1,36 @@
+.mz
+  margin: 0
+.pz
+  padding: 0
+.mpz
+  @extend .mz, .pz
+
+// DISPLAY
+.block
+  display: block
+.display-table
+  display: table
+.dib
+  display: inline-block
+.hidden
+  display: none
+.wrapper
+  margin: 0 auto
+  padding: 1.2em 1.5em
+
+.no-appearance
+  appearance: none
+  -webkit-appearance: none
+.menulist
+  appearance: menulist
+  -webkit-appearance: menulist
+
+.flex
+  display: flex
+  justify-content: space-between
+.columns
+  @extend .flex
+  flex-wrap: wrap
+  gap: 1em
+  div
+    flex-grow: 1

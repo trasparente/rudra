@@ -2,7 +2,13 @@
 {%- assign sitetime = site.time | date: '%s' -%}
 {%- assign hash = site.github.build_revision | slice: 0, 7 -%}
 {%- assign description = page.description | default: site.description | default: site.github.project_tagline -%}
-{%- assign collection = page.collection -%}
+{%- assign sort_by = page.sort_by | default: 'date' -%}
+{%- assign sort_order = page[sort_by] -%}
+{%- if sort_by == 'date' -%}{%- assign sort_order = page[sort_by] | date: "%s" -%}
+{%- endif -%}
+{%- assign collection = site.collections | where: 'label', page.collection | first -%}
+{%- assign docs = collection.docs | sort: sort_by -%}
+{% if sort_by == 'date' %}{% assign docs = docs | reverse %}{% endif %}
 {%- assign repo = site.github.public_repositories | where: "full_name", site.github.repository_nwo | first -%}
 {%- assign id = repo.id -%}
 {%- assign fork = repo.fork -%}
@@ -14,12 +20,55 @@
 {%- assign date_format = '%A %-d %B %Y %z' %}
 {%- assign date_numeric = '%y-%m-%d %T %z %w/6' %}
 {%- assign color_scheme = page.color_scheme | default: site.color_scheme | default: "dark" -%}
-{% assign html_pages = site.html_pages %}
-{% assign order_by = 'nav-main-order' %}
-{% if html_pages %}{% assign sorted_html_pages = html_pages | order_by: order_by %}{% endif %}
-{% assign site_collections = site.collections %}
-{% if site_collections %}{% assign sorted_collections = site_collections | order_by: order_by %}{% endif %}
-{% assign counter = 0 %}
+{%- assign html_pages = site.html_pages -%}
+{%- if html_pages -%}{%- assign sorted_html_pages = html_pages | sort_by: sort_by -%}{%- endif -%}
+{%- assign site_collections = site.collections -%}
+{%- if site_collections -%}{%- assign sorted_collections = site_collections | sort_by: 'order' -%}{%- endif -%}
+{%- assign folders_array = page.id | remove_first: "/" | replace: page.collection, '' | replace: page.slug, '' | replace: '//', '' | replace: '///', '' | split: '/' -%}
+{%- assign folders = '' | split: '' -%}
+{%- for ff in folders_array -%}{%- if ff != '' -%}{%- assign folders = folders | 'push': ff -%}{%- endif -%}{%- endfor -%}
+{%- assign counter = 0 -%}
+{%- capture metapage -%}
+| Title | `{{ page.title }}` |
+| Source | <a href='{% include widgets/links/github_url.html path=page.path %}'>On GitHub</a> |
+| Path | `{{ page.path }}` |
+| Id | {% if  page.id %}`{{ page.id }}`{% endif %} |
+| Slug | {% if page.slug %}`{{ page.slug }}`{% endif %} |
+| Collection | {% if page.collection %}`{{ page.collection }}`{% endif %} |
+| Categories | {% if page.categories != nil and page.categories.size != 0 %}`{{ page.categories | join: ', ' }}`{% endif %} |
+| Tags | {% if tags %}`{{ page.tags | join: ', ' }}`{% endif %} |
+| Folders | {% if folders.size != 0 %}`{{ folders | join: ', ' }}`{% endif %} |
+| Date | <code>{{ page.date | date_to_string }}</code> |
+| Updated | <code>{% include widgets/datetime.html datetime=page.date %}</code> |
+| Author | {% if  page.author %}`{{ page.author }}`{% endif %} |
+| Meta | {% if  page.meta %}`{{ page.meta }}`{% endif %} |
+| Pagination | {% if  page.pagination %}`{{ page.pagination }}`{% endif %} |
+| Sort_by | {% if sort_by %}`{{ sort_by }}`{% endif %} |
+| Sort_order | {% if sort_order %}`{% if sort_by == 'date' %}{{ sort_order | date_to_string }}{% else %}{{ sort_order }}{% endif %}`{% endif %} |
+{%- endcapture -%}
+{%- capture metarepo -%}
+| Name/Owner | `{{ site.github.repository_nwo }}` |
+| Source | <a href='{% include widgets/links/github_url.html %}'>On GitHub</a> |
+| Fork | `{{ fork }}` |
+| Forks | `{{ repo.forks }}` |
+| Contributors | `{{ repo.contributors.size }}` |
+| Created_at | <code>{% include widgets/datetime.html datetime=created_at %}</code> |
+| Pushed_at | <code>{% include widgets/datetime.html datetime=pushed_at %}</code> |
+| Build | `{{ hash }}` |
+| Id | `{{ id }}` |
+| Node_id | `{{ repo.node_id }}` |
+| Owner_id | `{{ repo.owner.id }}` |
+| Owner_node_id | `{{ repo.owner.node_id }}` |
+| Owner_type | `{{ repo.owner.type }}` |
+| Releases | `{{ repo.releases.size }}` |
+| Stargazers_count | `{{ repo.stargazers_count }}` |
+| Watchers_count | `{{ repo.watchers_count }}` |
+| Remote_theme | {% if site.remote_theme %}`{{ site.remote_theme | split: "@" | first }} @ {{ site.remote_theme | split: "@" | last }}`{% endif %} |
+{% endcapture %}
+{% capture metapages %}
+{% for v in site.github.versions %}| {{ v[0] }} | `{{  v[1] }}` |
+{% endfor %}
+{%- endcapture -%}
 {%- capture api -%}
 <fieldset markdown=1><legend>Liquid initial values</legend>
 - `site_title` {{ site_title }}

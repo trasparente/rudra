@@ -1,0 +1,32 @@
+// FOOTNOTES
+
+// Links
+.footnote
+  margin-inline: .2em
+  @extend .fg
+  &:before
+    content: "("
+  &:after
+    content: ")"
+
+// Box
+main #content
+  div.footnotes
+    @extend .border-top, .fs-mid
+    display: inline-block
+    margin-top: 4em
+    padding-right: 1em
+    &::before
+      content: "Footnotes"
+      font-style: oblique
+      color: var(--fg-muted)
+      display: block
+      margin: 1em 0 0 1em
+    ol li:target::marker
+      color: var(--link) !important
+  sup:target .footnote
+    color: var(--link)
+
+
+.reversefootnote, .footnote
+  text-decoration: none !important

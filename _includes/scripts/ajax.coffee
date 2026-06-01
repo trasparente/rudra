@@ -15,14 +15,9 @@ $.ajaxPrefilter (options, ajaxOptions, request) ->
 doc.on 'ajaxStart', () -> html.addClass 'ajax'
 doc.on 'ajaxStop', () -> setTimeout remove_ajax, 1000
 doc.on 'ajaxError', (e,r,x) ->
-  message = "#{r.responseJSON?.message || 'error'}"
-  url = x.url.replace /https\:\/\/|\?_=\d+|api.github.com\//g, ''
-  # regex to delete till the end: string.replace(/[?].*/,'')
-  log_error r, x
+  # message = "#{r.responseJSON?.message || 'error'}"
+  log "#{ r.status } > #{ short_url x }"
   return
-doc.on 'ajaxSuccess', (e,r,x) -> log_error r, x
+doc.on 'ajaxSuccess', (e,r,x) -> console.log r.status, short_url x
 
-log_error = (r, x) ->
-  console.log r.status, x.url.replace /https\:\/\/|\?_=\d+|api.github.com\//g, ''
-
-remove_ajax = -> html.removeClass('ajax')
+remove_ajax = -> html.removeClass 'ajax'

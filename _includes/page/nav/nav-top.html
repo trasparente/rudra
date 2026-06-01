@@ -1,0 +1,12 @@
+<nav id='nav-top'>
+  {% assign logo_path = site.static_files | where_exp: "item", "item.path contains 'logo.png'" | map: 'path' | first %}{% if logo_path and page.logo %}<img src='{{ logo_path | absolute_url }}' class='logo'>{% endif %}
+
+  <!-- PAGES not in 'assets/' -->
+  {% for link in html_pages %}{% unless link.path contains 'assets/' %}<a class='page-link' href="{{ link.url | absolute_url }}"{% if page.url == link.url %} aria-current="page"{% endif %}{% if link['order'] %} style='order: {{ link['order'] }}'{% endif %} title='{{ link.description }}'>{{ link.title | default: link.name }}</a>{% endunless %}{% endfor %}
+
+  <!-- COLLECTIONS -->
+  {% for coll in sorted_collections %}{% if coll.docs.size > 0 %}{% assign srt = coll.docs[0]['sort_by'] %}{% if srt == 'date' %}{% assign d = coll.docs | sort: srt | last %}{% else %}{% assign d = coll.docs | sort: srt | first %}{% endif %}
+  <a class='collection-link' href="{{ d.url | absolute_url }}"{% if page.url == d.url or page.collection == coll.label %} aria-current="page"{% endif %}{% if coll.order %} style="order: {{ coll.order }}"{% endif %} title='{{ coll.description | default: coll.title }}'>{{ coll.title | default: coll.label }}</a>{% endif %}
+  {% endfor %}
+
+</nav>

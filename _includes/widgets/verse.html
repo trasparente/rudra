@@ -1,0 +1,1 @@
+{% assign lines = include.verse | split: ',' %}{% for line in lines %}{% assign words = line | split: ' ' %}{% for word in words %}{% assign slash = word | split: '/' %}{% if slash.size == 1 %}{{ slash }}{% endif %}{% endfor %}<br><br>{% endfor %}

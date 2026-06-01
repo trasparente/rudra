@@ -1,6 +1,7 @@
-@bootstrap = (token) ->
+@bootstrap = (token = null) ->
   # html.addClass 'unlogged'
-  t = token || storage.get 'token'
+  console.log "bootstrap(#{ token })", "stored=#{ stored_token }"
+  t = token || stored_token
   if t
     get_auth(t).done (user) ->
       # use Bootstrap token for first login
@@ -27,8 +28,8 @@ get_repo = (user, token) -> $.get
     storage.set 'role', role
     # Alert for login
     message = "#{ user.login } logged as #{ role }"
-    if token
-      bottom.append "<div class='popover'>#{ message }</div>"
+    if token then log message
+    # bottom.append "<div class='popover'>#{ message }</div>"
     return # End get_repo done
 
 get_builds = -> $.get

@@ -1,0 +1,39 @@
+// Toast popover
+\:popover-open,
+.popover
+  @extend .bg, .border, .border-radius-big, .fs-mid
+  border-width: 2px
+  max-height: 87ch
+  max-width: 50ch
+  cursor: default
+  padding: 1.5em
+  // For long popover
+  &.top
+    margin-top: 1em
+  &:first-child
+    @extend .mz
+  &:hover
+    @extend .border
+    border-width: 2px
+  &::backdrop
+    background: rgba(0,0,0,.7)
+    backdrop-filter: saturate(40%)
+  table
+    min-width: 40ch
+  [role='tabpanel']
+    @extend .no-border
+  &#meta,
+  &#add-field
+    margin-top: 1.2em
+
+// POPOVER CLOSE
+a[data-popclose]
+  position: absolute
+  top: .3em
+  right: .3em
+  width: 1.1em
+  height: 1.1em
+  text-align: center
+  border-radius: 50%
+  text-decoration: none !important
+  padding: .3em

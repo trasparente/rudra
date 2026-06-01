@@ -1,0 +1,32 @@
+// RADIO TYPE
+.radio-container,
+.checkbox-container
+  @extend .flex
+  flex-direction: column
+  gap: .2em
+  // & + .description
+  //   @extend .fs-smaller, .fg-dim
+  //   padding-inline: .2em
+
+input[type='radio'],
+input[type='checkbox']
+  display: none
+  & + label[itemscope]
+    @extend .button
+    line-height: 1.2
+    display: inline-block
+    [itemprop='name']
+      font-weight: 600
+      @extend .uppercase
+    [itemprop='descriptions']
+      @extend .fs-smaller, .fg-dim
+      padding-inline: .2em
+      white-space: break-spaces
+  &:checked + label
+    color: var(--link)
+    .descriptions
+      color: var(--fg)
+  &:not(:checked) + label
+    color: var(--fg-dim)
+  &:not(:checked):hover + label
+    color: var(--fg)

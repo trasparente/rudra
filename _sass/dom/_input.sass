@@ -1,0 +1,38 @@
+// Appearence
+input, output, textarea
+  @extend .no-appearance
+select
+  @extend .menulist
+input, select, output, textarea
+  @extend .inherit, .button
+  background: var(--gry-dark)
+  border-left-width: 3px !important
+
+  // States
+  &:focus
+    outline: none
+    background: var(--bg)
+  &:active
+    color: inherit !important
+  &:valid
+    @extend .valid
+  &:not(:valid)
+    @extend .not-valid
+
+input[type='submit'],
+input[type='reset'],
+input[type='button']
+  @extend .button
+input[type='reset']
+  @extend .no-border
+  // &:focus
+  //   color: var(--fg) !important
+
+// Text fields
+input:is([type="text"], [type="email"], [type="date"], [type="datetime-local"], [type="number"], [type="password"], [type="color"]):not([type="radio"], [type="checkbox"]),
+select, textarea
+  min-width: 13em
+
+// Placeholder
+::placeholder, ::-moz-placeholder, ::-webkit-input-placeholder
+  color: var(--fg-dim)

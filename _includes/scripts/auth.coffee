@@ -1,8 +1,7 @@
 logout = (token) ->
   html.addClass('unlogged').removeClass 'logged admin guest'
   storage.clear()
-  if token
-    bottom.append "<div class='popover'>Logged out</div>"
+  if token then log 'Logged out'
   return
 
 login_form.on 'submit', ->
@@ -29,6 +28,6 @@ get_auth = (token) -> $.get
     storage.set 'user', user.login
     return # End get_auth done
   error: (request) ->
-    bottom.append "<div class='popover bg-error'>Auth error</div>"
+    log "Auth error", 'bg-red-dark'
     do logout
     return

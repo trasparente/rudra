@@ -6,13 +6,13 @@
     if obj and prop then return obj[prop]
     return obj
   set: (prop, value) ->
-    obj = storage.getItem {}
+    obj = storage.getItem()
     if obj and value
       obj[prop] = value
       storage.setItem obj
     return
   clear: (prop) ->
-    obj = storage.getItem {}
+    obj = storage.getItem()
     unless prop
       storage.setItem {}
     if obj[prop]
@@ -21,3 +21,6 @@
     return
   getItem: (def) -> try (JSON.parse atob localStorage.getItem storage.nwo) catch e then def
   setItem: (obj) -> localStorage.setItem storage.nwo, btoa JSON.stringify obj
+
+# Recall token right away
+stored_token = storage.get 'token'

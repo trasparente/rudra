@@ -2,23 +2,36 @@ $('form.input').each ->
   form = $ @
 
   form.on 'reset', ->
-    form.find('#file-url').empty()
+    form.addClass 'reset'
+    form.find(':input').blur()
+    return
+
+  form.on 'keyup change', '[id="file_url"]', (el, ev) ->
+    input = $ el.target
+    logbox = form.find('[title="file-url"]')
+    valid = form.find '[id="file_url"]:valid'
+    logbox.empty()
+    if valid.length
+      logbox.append input.val()
     return
 
   form.on 'submit', ->
     form.addClass 'submit'
-    file_url = "#{ github_repo_url }/contents/_data/#{ form.find('.file-url').text() }"
+    file_url = "#{ github_repo_url }/contents/#{ form.find('[title="file-url"]').text() }"
     form.find(':input').blur()
-    ext = form.find('#file_extension').val() || form.find('#file_url').val().split('.').pop()
-    switch ext.toLowerCase()
+    ext = file_url.split('.').pop()
+    file = switch ext.toLowerCase()
       # Json format
       when 'json' then form_to_object form
+
       # Yaml format
       when 'yaml', 'yml' then jsyaml.dump form_to_object form
+
       # Csv format
-      when 'csv' then get_csv_file form, file_url, form_to_array form
+      # when 'csv' then get_csv_file form, file_url, form_to_array form
     # CREATE / WRITE: file, file_url
-    # console.log file_url, file
+    console.log file_url, file
+
     return # End form submit
 
 # HELPERS
@@ -52,7 +65,7 @@ save_file = (form, file_url, file, sha) -> $.ajax
     content: btoa file
   }, sha
   success: (data) ->
-    bottom.append "<div class='popover'>Committed #{ data.content.path } as #{ data.commit.sha.slice 0, 7 }</div>"
+    log "Committed #{ data.content.path } as #{ data.commit.sha.slice 0, 7 }"
     form.trigger 'reset'
     html.removeClass('updated').addClass 'behind'
     if environment isnt 'development' then do get_builds

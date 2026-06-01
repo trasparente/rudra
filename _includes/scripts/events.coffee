@@ -6,6 +6,17 @@ doc.on 'submit', 'form.prevent', (e) -> e.preventDefault()
 doc.on 'click', '#login-button', -> $('#login-popover')[0].showPopover()
 # Dismiss bottom popovers
 doc.on 'click', '#bottom .popover', -> $(@).remove()
+# Eye button, password to text toggle
+doc.on 'click', '[data-eye]', ->
+  el = $ @
+  target = $ "##{el.attr 'data-eye'}"
+  type = target.attr 'type'
+  if type is 'password'
+    target.attr 'type', 'text'
+  if type is 'text'
+    target.attr 'type', 'password'
+  el.find('span').toggle 0
+  return
 
 # ONLINE / OFFLINE
 # Called from BODY
@@ -29,14 +40,18 @@ if document.hasFocus() then do focus else do blur
 # Called from BODY attribute
 @resize = ->
   # Fullscreen
-  if window.innerHeight is screen.height and window.innerWidth is screen.width and window.innerWidth > 650
+  if window.innerHeight is screen.height and window.innerWidth is screen.width and window.innerWidth > 1000
     html.addClass('fullscreen not-desktop not-mobile').removeClass 'not-fullscreen desktop mobile'
   else
     html.addClass('not-fullscreen').removeClass 'fullscreen'
     # Mobile screen
     if window.innerWidth <= 650
-      html.addClass('mobile not-desktop').removeClass 'desktop not-mobile'
-    else html.addClass('desktop not-mobile').removeClass 'mobile not-desktop'
+      html.addClass('mobile not-tablet not-desktop').removeClass 'desktop tablet not-mobile'
+    # Tablet
+    else if window.innerWidth <= 1000
+      html.addClass('tablet not-mobile not-desktop').removeClass 'desktop mobile not-tablet'
+    # Desktop
+    else html.addClass('desktop not-mobile not-tablet').removeClass 'mobile tablet not-desktop'
 
   # Check document SHOTER than window
   if window.innerHeight > document.body.scrollHeight
@@ -53,9 +68,10 @@ win.scroll () ->
   if win.scrollTop() > win.height() / 5
     html.addClass 'scrolled'
   else html.removeClass 'scrolled'
-  # Apply sticky class to main nav
-  el = $('header + nav')[0]
-  stickyTop = parseInt window.getComputedStyle(el).top
-  currentTop = el.getBoundingClientRect().top
-  el.classList.toggle "sticky", currentTop == stickyTop
+  # Apply sticky class to ToC
+  if $('details.toc')[0]
+    el = $('details.toc')[0]
+    stickyTop = parseInt window.getComputedStyle(el).top
+    currentTop = el.getBoundingClientRect().top
+    el.classList.toggle "sticky", (currentTop == stickyTop) & (win.scrollTop() > 0)
   return

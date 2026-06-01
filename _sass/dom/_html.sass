@@ -1,6 +1,10 @@
 html
   overflow-y: scroll
   scroll-behavior: smooth
+  // Navigation Main Sticky
+  scroll-padding-top: 7em
+  &:has(#content .toc)
+    scroll-padding-top: 9em
 
   // HIDE SAME-NAME STATES
   // NEGATION
@@ -10,11 +14,7 @@ html
   &.focus .blur, &:not(.focus) .focus,
   &:not(.scrolled) .scrolled, &.shorter .scrolled,
   &.scrolled .unscrolled, &.shorter .unscrolled,
-  &:not(.logged) .guest,
-  &:not(.logged) .admin,
-  &:not(.admin) .admin,
   &:not(.ajax) .ajax,
-  &:not(.guest) .guest,
   &:not(.fullscreen) .fullscreen,
   &:not(.desktop) .desktop,
   &:not(.mobile) .mobile,
@@ -30,3 +30,10 @@ html
   body[data-github-remote-theme=''] .remote-theme,
   .only-child:not(:only-child)
     @extend .hidden
+
+  // Invisibility
+  &:not(.logged) .guest,
+  &:not(.logged) .admin,
+  &:not(.admin) .admin,
+  &:not(.guest) .guest
+    visibility: hidden

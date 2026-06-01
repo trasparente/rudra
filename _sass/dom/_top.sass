@@ -1,0 +1,15 @@
+#top
+  @extend .flex, .bg
+  padding: .7em
+  flex-direction: column
+  gap: .5em
+  position: fixed
+  z-index: 100
+  left: 50%
+  transform: translateX(-50%)
+  .popover
+    padding: .5em .7em
+    border-color: var(--fg)
+    &:hover
+      cursor: pointer
+      opacity: .6

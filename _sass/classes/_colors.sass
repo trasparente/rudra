@@ -1,0 +1,64 @@
+// BACKGROUNDS
+.bg
+  background-color: var(--bg)
+  fill: var(--bg)
+.bg-trasp
+  background: transparent !important
+
+// Shades
+@each $name, $value in $shades
+  .bg-#{$name}
+    background-color: var(--#{$name}) !important
+    fill: var(--#{$name})
+
+// Colors
+@each $name, $value in $colors
+  .bg-#{$name}
+    background-color: var(--#{$name}) !important
+    fill: var(--#{$name})
+  .fg-#{$name}
+    color: var(--#{$name}) !important
+    fill: var(--#{$name})
+  .fg-#{$name}-light
+    color: var(--#{$name}-light) !important
+    fill: var(--#{$name}-light)
+  .bg-#{$name}-dark
+    background-color: var(--#{$name}-dark) !important
+    fill: var(--#{$name}-dark)
+  .bg-#{$name}-light
+    background-color: var(--#{$name}-light) !important
+    fill: var(--#{$name}-light)
+
+// FOREGROUNDS
+.fg
+  color: var(--fg)
+  fill: var(--fg)
+.fg-link
+  color: var(--link)
+
+// Shades
+@each $name, $value in $shades
+  .fg-#{$name}
+    color: var(--#{$name}) !important
+    fill: var(--#{$name})
+
+// Colors
+@each $name, $value in $colors
+  .fg-#{$name}
+    color: var(--#{$name})
+    fill: var(--#{$name})
+
+// Forms
+.valid
+  border-left-color: var(--fg)
+.not-valid
+  border-left-color: var(--yel)
+
+// Roles
+main #content
+  [role='alert']
+    @extend .display-table
+    border-color: var(--yel)
+    background: var(--yel-dark)
+    p
+      color: var(--fg) !important

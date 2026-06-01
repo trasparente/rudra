@@ -1,0 +1,51 @@
+// BORDER
+.border-style
+  border-style: solid
+.border
+  @extend .border-style, .bc
+  border-width: 1px
+.no-border
+  border: none
+
+// Widths
+.border-bottom
+  @extend .border
+  border-width: 0 0 1px 0
+.border-top
+  @extend .border
+  border-width: 1px 0 0 0
+.border-right
+  @extend .border
+  border-width: 0 1px 0 0
+.border-left
+  @extend .border
+  border-width: 0 0 0 1px
+.border-left-big
+  @extend .border
+  border-width: 0 0 0 3px
+
+// Radius
+.border-radius
+  border-radius: $border-radius
+.border-radius-big
+  border-radius: $border-radius-big
+
+// Colors
+.bc
+  border-color: var(--subtle)
+.bc-link
+  border-color: var(--link)
+
+// Shades
+@each $name, $value in $shades
+  .bc-#{$name}
+    border-color: var(--#{$name}) !important
+
+// Colors
+@each $name, $value in $colors
+  .bc-#{$name}
+    border-color: var(--#{$name}) !important
+  .bc-#{$name}-light
+    border-color: var(--#{$name}-light) !important
+  .bc-#{$name}-dark
+    border-color: var(--#{$name}-dark) !important

@@ -1,0 +1,42 @@
+form
+  @extend .fs-mid
+  >
+    h1, h2, h3, h4
+      @extend .mz
+  // DATA INPUTS
+  [data-input='buttons']
+    padding-top: 1em !important
+  [data-input]:not([data-input='hidden']),
+  [data-id-filter]
+    padding-block: 0 0.5em
+    // LABELS
+    > label
+      @extend .block, .fg-mid, .ff-monospace
+      margin: .3em
+      &:has(~ input:focus, ~ select:focus)
+        color: var(--fg) !important
+
+    // Description
+    > .description
+      margin: .3em
+      @extend .block, .fs-small, .fg-dim
+      code
+        @extend .fs-small, .fg-dim, .bg-trasp
+    &[data-input='message'] code
+      @extend .fs-small, .fg-dim
+      &::before
+        content: '_data/'
+
+  // VALID Form
+  &:valid [data-input='buttons']
+    > label
+      color: var(--fg) !important
+    [type='submit']
+      border-left-color: var(--fg)
+
+    // VALID Fields
+    // [data-input]:not([data-input='buttons'])
+    //   input:valid
+    //     border-left-color: var(--bg-gre)
+    //   input:not(:valid)
+    //     border-left-color: var(--bg-ora)
