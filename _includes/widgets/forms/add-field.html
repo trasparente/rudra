@@ -1,0 +1,37 @@
+<!-- FORM FIELD -->
+<div id='add-field-popover' popover>
+  {% include widgets/links/popclose.html %}
+  <h2>Add field</h2>
+  <form id='add-field-form' class='prevent'>
+    <div>
+      <div data-input='text' data-id='name'>
+        <label for="name">name</label>
+        <input type='text' name="name" id="name" pattern="([A-Za-z]|[0-9]|_)+" required />
+        <span class='description'><code>[A-Za-z]|[0-9]|_</code></span>
+      </div>
+      <div data-input='select' data-id='type'>
+        <label for="type">type</label>
+        <select name="type" id="type" required>
+          {% for f in site.fields %}<option value='{{ f[0] }}'>{{ f[0] | upcase }}</option>{% endfor %}
+        </select>
+        <span class='description'>&nbsp;</span>
+      </div>
+      <div data-input="buttons">
+        <input type='submit' id='confirm' name='confirm' value='CONFIRM' />
+        <input type='reset' title='Close popup' data-popclose id='cancel' name='cancel' value='CANCEL' />
+      </div>
+    </div>
+    <div>
+      <div id='add-field-container'></div>
+    </div>
+  </form>
+</div>
+
+<!-- FIELD TEMPLATES -->
+{% for ff in site.fields %}{% assign ff0 = ff | first %}
+<template id='field-{{ ff0 }}'>{% for fff in ff.last %}{% assign fff0 = fff | first %}
+{% assign tt = fff.last.type | default: fff.last %}<div data-input='{{ tt }}' data-id='{{ fff0 }}'>
+  <label for="{{ fff0 }}">{{ fff0 }}</label>{% assign field_url = 'widgets/input/' | append: tt | append: '.html' %}
+  {% include {{ field_url }} id=fff0 %}
+</div>{% endfor %}
+</template>{% endfor %}

@@ -1,8 +1,15 @@
 html
   overflow-y: scroll
   scroll-behavior: smooth
+
   // Navigation Main Sticky
   scroll-padding-top: 7em
+
+  // Request
+  &.ajax #branding
+    opacity: .6
+
+  // Toc sticky
   &:has(#content .toc)
     scroll-padding-top: 9em
 
@@ -17,10 +24,12 @@ html
   &:not(.ajax) .ajax,
   &:not(.fullscreen) .fullscreen,
   &:not(.desktop) .desktop,
+  &:not(.tablet) .tablet,
   &:not(.mobile) .mobile,
   &:not(.debug) .debug,
   &.fullscreen .not-fullscreen,
   &.desktop .not-desktop,
+  &.tablet .not-tablet,
   &.mobile .not-mobile,
   &.shorter [href='#top'],
   body:not([data-github-fork='true']) .fork,

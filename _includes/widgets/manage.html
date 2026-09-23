@@ -1,5 +1,4 @@
 <!-- FORM -->
-{%- assign counter = counter | plus: 1 -%}
 <fieldset class='input {{ include.class | strip }}'><legend>Manage</legend>
 <form id='input-{{ counter }}' class='{{ 'input prevent reset admin' | append: include.class | strip }}'>
 <div data-input='text' data-id='file_url'><label for='file_url'>file_url</label><input type="text" id="file_url" name="file_url" required="" pattern='[\w]+\.(json|yml|yaml)'><span class='description'>{{ 'File URL inside `_data`<br>Extensions `json`,`yml`,`yaml`' | newline_to_br | markdownify | replace: 'p>','span>' }}</span></div>

@@ -8,16 +8,13 @@ form:
       Extensions `json`,`yml`,`yaml`
     pattern: "[\\w\\/]+\\.(json|yml|yaml)"
     required: true
-  prova:
-    type: date
-    required: true
 ---
 # Admin
 
-{% include widgets/form.html class='admin' add='field' %}
+{% include widgets/form.html class='admin' id='add-field' %}
 
 ```liquid
-{% raw %}{% include widgets/form.html class='admin' add='field' %}{% endraw %}
+{% raw %}{% include widgets/form.html class='admin' id='add-field' %}{% endraw %}
 ```
 
 {% include widgets/api.html include='widgets/form' %}

@@ -6,7 +6,7 @@
 .highlighter-rouge .l { color: #f99b15 } /* Literal */
 .highlighter-rouge .n { color: #e7e9db } /* Name */
 .highlighter-rouge .o { color: #5bc4bf } /* Operator */
-.highlighter-rouge .p { color: hsl(69, 64%, 70%) } /* Punctuation */
+.highlighter-rouge .p { color: var(--sky-light) } /* Punctuation */
 .highlighter-rouge .ch { color: #776e71 } /* Comment.Hashbang */
 .highlighter-rouge .cm { color: #776e71 } /* Comment.Multiline */
 .highlighter-rouge .cp { color: #776e71 } /* Comment.Preproc */
@@ -30,7 +30,7 @@
 .highlighter-rouge .ld { color: #48b685 } /* Literal.Date */
 .highlighter-rouge .m { color: #f99b15 } /* Literal.Number */
 .highlighter-rouge .s { color: #48b685 } /* Literal.String */
-.highlighter-rouge .na { color: #06b6ef } /* Name.Attribute */
+.highlighter-rouge .na { color: #06b6ef; color: var(--yel-light) } /* Name.Attribute */
 .highlighter-rouge .nb { color: #e7e9db } /* Name.Builtin */
 .highlighter-rouge .nc { color: #fec418 } /* Name.Class */
 .highlighter-rouge .no { color: #ef6155 } /* Name.Constant */
@@ -40,7 +40,7 @@
 .highlighter-rouge .nf { color: #06b6ef } /* Name.Function */
 .highlighter-rouge .nl { color: #e7e9db } /* Name.Label */
 .highlighter-rouge .nn { color: #fec418 } /* Name.Namespace */
-.highlighter-rouge .nx { color: #06b6ef } /* Name.Other */
+.highlighter-rouge .nx { color: #06b6ef; color: var(--dodg-light) } /* Name.Other */
 .highlighter-rouge .py { color: #e7e9db } /* Name.Property */
 .highlighter-rouge .nt { color: #5bc4bf } /* Name.Tag */
 .highlighter-rouge .nv { color: #ef6155 } /* Name.Variable */

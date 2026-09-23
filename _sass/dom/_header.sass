@@ -1,11 +1,12 @@
 header
-  @extend .bg, .border-bottom
+  @extend .bg, .border-bottom, .ps
   z-index: 10
-  position: sticky
   top: 0
   & > div
     @extend .flex, .wrapper
+    height: var(--header-height)
+    align-items: center
+    padding-block: 0
   img.logo
-    width: auto
-    height: 1em
-    margin-right: .2em
+    width: 2em
+    margin-inline: .5em .7em

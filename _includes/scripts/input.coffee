@@ -1,10 +1,7 @@
+# FORMS CLASS "input"
+# ----------------------------
 $('form.input').each ->
   form = $ @
-
-  form.on 'reset', ->
-    form.addClass 'reset'
-    form.find(':input').blur()
-    return
 
   form.on 'keyup change', '[id="file_url"]', (el, ev) ->
     input = $ el.target
@@ -13,10 +10,9 @@ $('form.input').each ->
     logbox.empty()
     if valid.length
       logbox.append input.val()
-    return
+    return # End keyup-change
 
   form.on 'submit', ->
-    form.addClass 'submit'
     file_url = "#{ github_repo_url }/contents/#{ form.find('[title="file-url"]').text() }"
     form.find(':input').blur()
     ext = file_url.split('.').pop()
@@ -30,9 +26,11 @@ $('form.input').each ->
       # Csv format
       # when 'csv' then get_csv_file form, file_url, form_to_array form
     # CREATE / WRITE: file, file_url
-    console.log file_url, file
+    console.log file_url, file, form_to_object form
 
     return # End form submit
+
+  return # End form.input
 
 # HELPERS
 
@@ -77,13 +75,14 @@ save_file = (form, file_url, file, sha) -> $.ajax
 form_to_object = (form) ->
   file = {}
   # Loop normal fields
-  form.find('input:not([type=radio],[type=submit],[type=reset],[type=button],[type=hidden]')
+  form.find('input:not([type=radio],[type=submit],[type=reset],[type=button],[type=hidden]):visible, select:visible, input[type=checkbox]:checked')
     .each ->
       el = $ @
       # tag = el.prop 'tagName'
       file[el.attr 'name'] = switch el.attr 'type'
         # Number type
         when 'number' then Number el.val()
+        when 'checkbox' then true
         # String: All others
         else el.val()
       return # End fields loop
@@ -95,6 +94,34 @@ form_to_object = (form) ->
     return # End radio loop
 
   return file
+
+#
+# Add Field
+#
+add_field = (form) ->
+  console.log form.find()
+  return file
+  # file = {}
+  # # Loop normal fields
+  # form.find('input:not([type=radio],[type=submit],[type=reset],[type=button],[type=hidden]):visible, select:visible, input[type=checkbox][type=radio]:checked')
+  #   .each ->
+  #     el = $ @
+  #     # tag = el.prop 'tagName'
+  #     value = switch el.attr 'type'
+  #       # Number type
+  #       when 'number' then Number el.val()
+  #       when 'checkbox' then true
+  #       # String: All others
+  #       else el.val()
+  #     if value then file[el.attr 'name'] = value
+  #     console.log value
+  #     return # End fields loop
+  # Loop radio fields
+  # form.find('input:checked').each ->
+  #   el = $ @
+  #   name = el.attr 'name'
+  #   file[name] = el.val()
+  #   return # End radio loop
 
 #
 # FORM to Array

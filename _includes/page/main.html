@@ -1,7 +1,9 @@
 <main>
-  {%- include page/nav/nav-side.html -%}
-  <div id='content' markdown='1'>
-    {{ content }}
-    {%- if page.pagination -%}{% include widgets/pagination.html %}{%- endif -%}
+  <div>
+    {%- include page/nav/nav-side.html -%}
+    <div id='content' markdown='1'>
+      {{ content }}
+      {%- if page.pagination -%}{% include widgets/pagination.html %}{%- endif -%}
+    </div>
   </div>
 </main>

@@ -1,21 +1,20 @@
 details
   margin: .3em
   summary
-    @extend .fs-small
-    cursor: pointer
-    display: list-item
-    list-style: none
+    @extend .fs-small, .pointer
+    // display: list-item
+    // list-style: none
     &:hover
       color: var(--mid)
       &::after
         color: var(--mid)
     &:active
       color: var(--fg)
-    &::after
-      @extend .fs-up
-      float: right
-      content: '\203a'
-      transform: translateY(-5px)
+    // &::after
+    //   @extend .fs-up
+    //   // float: right
+    //   content: '\203a'
+    //   transform: translateY(-5px)
   &::-webkit-details-marker
     display: none
   &[open] summary::after
@@ -23,10 +22,16 @@ details
 
   // Toc details
   &.toc
-    position: sticky
-    top: 3.6em
+    @extend .ps
+    top: var(--header-height)
+    // top: 3.6em
     margin: 0 -1.5em
     padding: 1em 1.5em
     @extend .bg
     &.sticky
       @extend .border-bottom
+
+form details
+  @extend .mz, .border-bottom
+  summary
+    padding: 1em 0

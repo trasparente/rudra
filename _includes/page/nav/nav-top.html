@@ -1,5 +1,4 @@
 <nav id='nav-top'>
-  {% assign logo_path = site.static_files | where_exp: "item", "item.path contains 'logo.png'" | map: 'path' | first %}{% if logo_path and page.logo %}<img src='{{ logo_path | absolute_url }}' class='logo'>{% endif %}
 
   <!-- PAGES not in 'assets/' -->
   {% for link in html_pages %}{% unless link.path contains 'assets/' %}<a class='page-link' href="{{ link.url | absolute_url }}"{% if page.url == link.url %} aria-current="page"{% endif %}{% if link['order'] %} style='order: {{ link['order'] }}'{% endif %} title='{{ link.description }}'>{{ link.title | default: link.name }}</a>{% endunless %}{% endfor %}

@@ -1,1 +1,14 @@
-<a href='#' id='login-button' class='unlogged prevent' title="Login">Login</a><a href='#' id='logout-button' class='logged prevent' title="Logout">Logout</a>
+<a href='#' id='login-button' class='unlogged prevent' title="Login" data-popover='login-popover'>Login</a><a href='#' id='logout-button' class='logged prevent' title="Logout">Logout</a>
+<!-- LOGIN -->
+<div id='login-popover' popover>
+  {% include widgets/links/popclose.html %}
+  <h2>Login</h2>
+  <p>Paste a GitHub personal token<br><a href='https://github.com/settings/tokens'>github.com/settings/tokens</a></p>
+  <form id='login-form' class='columns prevent'>
+    <div data-input='password'>
+      <input type="password" id='login-token' name='login-token' autocomplete='off' required />
+      <button type='submit'>Login</button>
+      <button type='button' data-eye='login-token'><span>&oast;</span><span class='hidden'>&odot;</span></button>
+    </div>
+  </form>
+</div>

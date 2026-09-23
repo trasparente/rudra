@@ -10,4 +10,5 @@
 {% include scripts/datetime.coffee %}
 {% include scripts/tabs.coffee %}
 {% include scripts/filter.coffee %}
-{% include scripts/forms.coffee %}
+{% include scripts/forms/basic.coffee %}
+{% include scripts/forms/add-field.coffee %}

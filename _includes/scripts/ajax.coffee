@@ -13,11 +13,12 @@ $.ajaxPrefilter (options, ajaxOptions, request) ->
 
 # Control html.ajax class
 doc.on 'ajaxStart', () -> html.addClass 'ajax'
-doc.on 'ajaxStop', () -> setTimeout remove_ajax, 1000
+doc.on 'ajaxStop', () -> do remove_ajax
+# doc.on 'ajaxStop', () -> setTimeout remove_ajax, 100
 doc.on 'ajaxError', (e,r,x) ->
   # message = "#{r.responseJSON?.message || 'error'}"
-  log "#{ r.status } > #{ short_url x }"
+  log x.type, r.status, short_url x
   return
-doc.on 'ajaxSuccess', (e,r,x) -> console.log r.status, short_url x
+doc.on 'ajaxSuccess', (e,r,x) -> console.log x.type, r.status, short_url x
 
 remove_ajax = -> html.removeClass 'ajax'

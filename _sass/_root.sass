@@ -1,29 +1,46 @@
-\:root
-  color-scheme: dark
+// LIGHT SCHEME
+// -----------------------------
+@media (prefers-color-scheme: light)
+  \:root
+    // BG FG LINK
+    --bg: var(--white)
+    --fg: var(--black)
+    --link: #{$link}
 
-  // SHADES: black, subtle, dim, white
+// DARK SCHEME
+// ------------------------------
+@media (prefers-color-scheme: dark)
+  \:root
+    // BG FG LINK
+    --bg: var(--black)
+    --fg: var(--white)
+    --link: #{$link}
+
+// ROOT
+// -----------------------------
+\:root
+  color-scheme: #{$color-scheme}
+  --header-height: #{$header-height}
+
+  // SHADES: black, dark, subtle, dim, white
+  // CONTRAST: black, dark, subtle, dim, white
   @each $name, $value in $shades
     --#{$name}: hsl(#{hue($value)}, #{saturation($value)}, #{lightness($value)})
-
-  // BG FG LINK
-  --bg: var(--black)
-  --fg: var(--white)
-  --link: #{$link}
 
   // COLORS
   @each $name, $value in $colors
     // Colors
     --#{$name}: hsl(#{hue($value)}, #{saturation($value)}, #{lightness($value)})
     // Dark
-    --#{$name}-dark: hsla(#{hue($value)}, #{saturation($value)}, 10%)
+    --#{$name}-dark: hsl(#{hue($value)}, #{saturation($value)}, #{$dark-lightness})
     // Light
-    --#{$name}-light: hsl(#{hue($value)}, #{saturation($value)}, 85%)
+    --#{$name}-light: hsl(#{hue($value)}, #{saturation($value)}, #{$light-lightness})
 
   // NEON
   @each $name, $value in $neon
     // Colors
     --#{$name}: hsl(#{hue($value)}, #{saturation($value)}, #{lightness($value)})
     // Dark
-    --#{$name}-dark: hsla(#{hue($value)}, #{saturation($value)}, 10%)
+    --#{$name}-dark: hsl(#{hue($value)}, #{saturation($value)}, #{$dark-lightness})
     // Light
-    --#{$name}-light: hsl(#{hue($value)}, #{saturation($value)}, 80%)
+    --#{$name}-light: hsl(#{hue($value)}, #{saturation($value)}, #{$light-lightness})

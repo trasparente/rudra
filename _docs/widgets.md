@@ -24,6 +24,24 @@ order: 25
   </p>
 </div>
 ## Tabs
+```html
+<div class='tabs'>
+  <div role='tablist'>
+    <a href='#' role='tab'>First</a>
+    <a href='#' role='tab'>Second</a>
+    <a href='#' role='tab'>Third</a>
+  </div>
+  <div role='tabpanel'>
+    First content
+  </div>
+  <div role='tabpanel'>
+    Second content
+  </div>
+  <div role='tabpanel'>
+    Third content
+  </div>
+</div>
+```
 <div class='tabs'>
   <div role='tablist'>
     <a href='#' role='tab'>Install</a>
@@ -43,21 +61,3 @@ order: 25
     <p>Laboris nisi ut aliquip ex ea commodo consequat.</p>
   </div>
 </div>
-```html
-<div class='tabs'>
-  <div role='tablist'>
-    <a href='#' role='tab'>First</a>
-    <a href='#' role='tab'>Second</a>
-    <a href='#' role='tab'>Third</a>
-  </div>
-  <div role='tabpanel'>
-    First content
-  </div>
-  <div role='tabpanel'>
-    Second content
-  </div>
-  <div role='tabpanel'>
-    Third content
-  </div>
-</div>
-```

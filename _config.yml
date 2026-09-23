@@ -49,33 +49,47 @@ fields:
     slug: text
   text:
     value: text
+    title: text
+    description: text
     autocomplete: text
     pattern: text
+    minlength: number
+    maxlength: number
     placeholder: text
     required: checkbox
     disabled: checkbox
   number:
+    title: text
+    description: text
     value: number
     min: number
     max: number
     step: number
-    disabled: checkbox
     required: checkbox
+    disabled: checkbox
   date:
+    title: text
+    description: text
     value: text
-    disabled: checkbox
     required: checkbox
-  select:
-    value: text
     disabled: checkbox
+  select:
+    title: text
+    description: text
+    value: text
+    size: number
     required: checkbox
     multiple: checkbox
-    size: number
+    disabled: checkbox
   checkbox:
-    value: text
+    title: text
+    description: text
     checked: checkbox
     required: checkbox
+    disabled: checkbox
   radio:
-    value: text
+    title: text
+    description: text
+    checked: checkbox
     required: checkbox
     disabled: checkbox

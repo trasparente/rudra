@@ -1,17 +1,19 @@
 // BACKGROUNDS
 .bg
-  background-color: var(--bg)
+  background-color: var(--bg) !important
   fill: var(--bg)
 .bg-trasp
   background: transparent !important
 
-// Shades
+// SHADES
+// black, subtle, dim, mid, white
 @each $name, $value in $shades
   .bg-#{$name}
     background-color: var(--#{$name}) !important
     fill: var(--#{$name})
 
-// Colors
+// COLORS
+// blu, red, ora, sky, cya, for, pin, vio, gre, yel, gry
 @each $name, $value in $colors
   .bg-#{$name}
     background-color: var(--#{$name}) !important
@@ -31,10 +33,12 @@
 
 // FOREGROUNDS
 .fg
-  color: var(--fg)
+  color: var(--fg) !important
   fill: var(--fg)
 .fg-link
-  color: var(--link)
+  color: var(--link) !important
+.fg-link-current
+  color: $link-current !important
 
 // Shades
 @each $name, $value in $shades

@@ -1,11 +1,7 @@
-// SCREEN SIZE
-
-// Tablet
-html.tablet
-  #nav-side
-    width: 10em
-  main #nav-side + #content
-    margin-left: 10em
-// html.mobile
-// html.desktop
-// html.fullscreen
+// SCREEN
+@each $screen in $screens
+  html.#{$screen}
+    $index: index(($screens), $screen)
+    --nav-side-width: #{nth($nav-side-width, $index)}
+    --popover-max-width: #{nth($popover-max-width, $index)}
+    --wrapper-max-width: #{nth($wrapper-max-width, $index)}

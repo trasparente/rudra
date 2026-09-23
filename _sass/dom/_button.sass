@@ -1,30 +1,33 @@
 button, .button
-  cursor: pointer
-
   // Reset button appearance
-  @extend .no-appearance
+  @extend .no-appearance, .pointer
   background: transparent
-  cursor: pointer
   outline: none
   text-decoration: none !important
 
   // Style
-  @extend .bg, .fg-dim
-  @extend .mz, .inherit, .border, .border-radius-big
-  border-width: 2px
+  @extend .bg, .fg-dim, .mz, .inherit, .border, .border-radius-big
+  border-width: 1px
+  border-left-width: 5px !important
   padding: .5em .7em
 
   &[data-eye]
     @extend .no-border
-    padding-inline: 0
+    // padding-inline: 0
 
-  &.active, &[aria-selected='true']
+  &[aria-selected='true']
     color: var(--fg) !important
     border-color: var(--gry)
-  &:hover, &:focus
-    color: var(--fg) !important
-  &:active
-    color: var(--link) !important
-  &[disabled],
-  &.disabled
+
+  // HOVER
+  &:not([disabled])
+    &:hover, &:focus
+      @extend .bg-dark, .fg
+
+  // FOCUS
+  &:not([disabled]):focus
+    opacity: .6
+
+  // DISABLED
+  &[disabled], &.disabled
     cursor: default

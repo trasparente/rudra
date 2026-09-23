@@ -1,5 +1,6 @@
-#top
-  @extend .flex, .bg
+// #top collide with page top link
+#topper
+  @extend .flex
   padding: .7em
   flex-direction: column
   gap: .5em
@@ -8,8 +9,7 @@
   left: 50%
   transform: translateX(-50%)
   .popover
+    @extend .pointer, .bc-white
     padding: .5em .7em
-    border-color: var(--fg)
     &:hover
-      cursor: pointer
       opacity: .6

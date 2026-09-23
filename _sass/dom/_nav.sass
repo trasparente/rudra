@@ -1,17 +1,35 @@
+nav
+  a, a:visited, .link
+    @extend .link-nav
+
+.link-nav
+  @extend .fg-dim, .link-hover-fg
+  &[aria-current='page']
+    @extend .fg-link-current, .link-hover-fg
+
+// TOP NAVIGATION
 #nav-top, #nav-meta
   @extend .flex
-  gap: 1em
+  gap: .2em
   align-items: center
+  > a
+    @extend .uppercase
+    padding: .5em
+#nav-top
+  @extend .fg1
+  justify-content: flex-start
 
+// SIDE NAVIGATION
 #nav-side
-  @extend .fs-mid
-  // Proper width
-  padding: 1em
-  width: 14em
-  position: fixed
-  top: 4em
+  @extend .fs-mid, .ps
+  min-width: var(--nav-side-width)
+  top: calc(var(--header-height) + 1px)
   bottom: 0
-  overflow-y: scroll
+  padding: 1em 0
+  align-self: self-start
+  overflow: hidden auto
+  overscroll-behavior: none
+  scrollbar-gutter: stable
   #nav-side-container
     @extend .flex
     flex-direction: column
@@ -23,12 +41,6 @@
     display: block
     padding: .3em .5em
     @extend .border-radius-big, .mz
-    color: var(--mid)
-    &[aria-current='page']
-      @extend .fg-link
-    &:hover
-      color: var(--fg)
-      text-decoration: none
 
   // Details
   details

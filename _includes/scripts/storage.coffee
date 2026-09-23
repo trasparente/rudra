@@ -15,7 +15,7 @@
     obj = storage.getItem()
     unless prop
       storage.setItem {}
-    if obj[prop]
+    if obj?[prop]
       delete obj[prop]
       storage.setItem obj
     return

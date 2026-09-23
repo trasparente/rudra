@@ -1,20 +1,25 @@
 form
-  @extend .fs-mid
+  @extend .fs-mid, .flex
   >
-    h1, h2, h3, h4
-      @extend .mz
-  // DATA INPUTS
-  [data-input='buttons']
-    padding-top: 1em !important
-  [data-input]:not([data-input='hidden']),
-  [data-id-filter]
-    padding-block: 0 0.5em
+    // FLEX LAYOUT
+    div
+      min-width: 15.6em
+      [data-input] button:first-child
+        margin-top: 1.8em
+    // // Headings
+    // h1, h2, h3, h4
+    //   @extend .mz
+  // DATA-INPUT
+  [data-input], [data-id-filter]
+    padding: .5em
     // LABELS
     > label
-      @extend .block, .fg-mid, .ff-monospace
+      @extend .block, .fg-mid, .ff-monospace, .pointer
+      min-width: 13em
       margin: .3em
-      &:has(~ input:focus, ~ select:focus)
-        color: var(--fg) !important
+      &:has(~ input:focus, ~ select:focus),
+      &[data-popover]:hover
+        @extend .fg
 
     // Description
     > .description
@@ -22,10 +27,26 @@ form
       @extend .block, .fs-small, .fg-dim
       code
         @extend .fs-small, .fg-dim, .bg-trasp
-    &[data-input='message'] code
+  [data-input='message']
+    code
       @extend .fs-small, .fg-dim
+      letter-spacing: -1px
       &::before
         content: '_data/'
+  &.disabled
+    filter: blur(1px)
+    pointer-events: none
+  // &#add-field-form
+  // [data-input='buttons']
+  //   position: fixed
+  //   top: calc(85vh - 1em)
+  #fields [data-input]
+    padding: .25em
+    margin: .25em
+    @extend .bg-dark, .pointer
+    &:hover
+      label, .description
+        @extend .fg
 
   // VALID Form
   &:valid [data-input='buttons']

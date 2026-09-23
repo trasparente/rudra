@@ -1,18 +1,20 @@
-main #nav-side + #content
-  position: relative
-  @extend .border-left
-  margin-left: 14em
+main
+  @extend .flex, .fg1
+  & > div
+    @extend .flex, .wrapper, .fg1
+    padding-block: 0
 
-main #content
-  padding: 1.5em
-  // Typography
-  p
-    @extend .fg-mid
-  & >
-    h1, h2, h3
-      &:first-child
-        margin-top: 0
+  // CONTENT
+  #content
+    @extend .fg1
+    padding: 1.5em
+    a, a:visited, .link
+      @extend .link-hover-underline
 
-  // LINKS
-  a, a:visited, .link
-    text-decoration: underline
+    // Typography
+    p
+      @extend .fg-mid
+    & >
+      h1, h2, h3
+        &:first-child
+          margin-top: 0

@@ -1,12 +1,13 @@
+console.clear()
 console.log 'jq', $.fn.jquery
+# YAML to JSON: jsyaml.load YAML-string
+# JSON to YAML: jsyaml.dump JSON-object
 
 # Definitions
 win = $ window
 doc = $ document
 html = $ 'html'
 lang = html.attr 'lang'
-login_form = $ '#login-form'
-login_popover = $ '#login-popover'
 bottom = $ '#bottom'
 today = +new Date().setHours 0,0,0,0
 environment = '{{ site.github.environment }}'
@@ -33,21 +34,10 @@ $('#markdown-toc li a').on "click", ->
 # Duplicate `[cite]` in empty `[title]`
 $('[cite]:not([title]), [cite][title=""]').each -> $(@).attr 'title', $(@).attr 'cite'
 
-# Popover
-# Activate open links `a[data-popover='id']`
-$('[data-popover]').on "click", (e) ->
-  e.preventDefault()
-  popover = $(e.target).attr 'data-popover'
-  $("##{ popover }")[0].showPopover()
-  return
-# Activate popclose links
-$('[data-popclose]').on 'click', ->
-  $(@).parent('[popover]')[0].hidePopover()
-
 # Open all nav-side details
 $('#nav-side details').each -> $(@).attr 'open', 'open'
 
-@log = (string, classe = '', position = 'top') ->
+@log = (string, classe = '', position = 'topper') ->
   top = $("##{ position }").append "<div class='popover #{ classe }'>#{ string }</div>"
   return
 

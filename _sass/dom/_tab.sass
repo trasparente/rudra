@@ -1,18 +1,35 @@
-// Switches
+// TABS container
+.tabs
+  margin: 1em 0
+
+// Links container
 [role='tablist']
   @extend .flex
   justify-content: flex-start
   gap: .3em
 
+// Tab links
 [role='tab']
-  @extend .button
-  margin: .5em 0
+  @extend .border-bottom
+  padding: .5em .7em
+  &:not([aria-selected='true'])
+    @extend .fg-dim
+  &[aria-selected='true']
+    color: var(--fg) !important
+    border-color: var(--dim)
+  &:hover
+    color: var(--fg) !important
+    text-decoration: none !important
+  &:focus
+    opacity: 1
+  &:active
+    opacity: .6
 
+// Tab panels
 [role='tabpanel']
   width: fit-content
   padding: 1em
-  @extend .border, .border-radius-big
-  border-width: 1px 0 1px 0
+  @extend .border, .border-radius-big, .border-bottom
   border-color: var(--gry-dark)
   > :first-child
     margin-top: 0

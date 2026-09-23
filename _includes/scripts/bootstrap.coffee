@@ -1,6 +1,6 @@
 @bootstrap = (token = null) ->
   # html.addClass 'unlogged'
-  console.log "bootstrap(#{ token })", "stored=#{ stored_token }"
+  console.log "bootstrap(#{ token })", "stored_token: #{ stored_token }"
   t = token || stored_token
   if t
     get_auth(t).done (user) ->

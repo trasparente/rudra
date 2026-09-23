@@ -1,33 +1,50 @@
 // Toast popover
 \:popover-open,
 .popover
-  @extend .bg, .border, .border-radius-big, .fs-mid
+  @extend .bg, .border, .border-radius-big, .fs-mid, .link-hover-underline
   border-width: 2px
-  max-height: 87ch
-  max-width: 50ch
+  max-width: var(--popover-max-width)
+  max-height: 85vh
   cursor: default
-  padding: 1.5em
-  // For long popover
+  padding: 1em
+  // For tall popover
   &.top
-    margin-top: 1em
-  &:first-child
-    @extend .mz
-  &:hover
-    @extend .border
-    border-width: 2px
+    margin-block: 1em
+  &.bottom
+    margin-bottom: 1em
+  // Links
+  a, a:visited, .link
+    &:not([data-popclose])
+      @extend .link-hover-underline
+  // &:hover
+  //   @extend .border
+  //   border-width: 2px
   &::backdrop
-    background: rgba(0,0,0,.7)
-    backdrop-filter: saturate(40%)
+    @extend .bg-subtle
   table
     min-width: 40ch
+  p
+    @extend .fg-mid
   [role='tabpanel']
     @extend .no-border
-  &#meta,
-  &#add-field
+  // Attach top screen
+  &#meta
     margin-top: 1.2em
+  // Form on popover
+  form
+    padding-right: 1em
+
+// SPECIAL popover
+#add-field-popover
+  overflow-y: scroll
+#add-field-popover, #info
+  @extend .top
+#status
+  @extend .bottom
 
 // POPOVER CLOSE
 a[data-popclose]
+  @extend .link-hover-fg
   position: absolute
   top: .3em
   right: .3em
@@ -35,5 +52,7 @@ a[data-popclose]
   height: 1.1em
   text-align: center
   border-radius: 50%
-  text-decoration: none !important
   padding: .3em
+  z-index: 1000
+  & + *
+    margin-top: 0

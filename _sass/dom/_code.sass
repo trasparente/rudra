@@ -1,12 +1,13 @@
 tt, code, kbd, samp, td.number
   // Font
-  @extend .ff-monospace, .fs-mid
+  @extend .ff-monospace, .fs-small
   // Style
   margin: -1px
   padding: 1px 4px
   // Dont break words
   word-break: keep-all
 
+// Inside TABLES
 td
   tt, code, code.highlighter-rouge, kbd, samp
     @extend .mpz, .fg-mid, .no-border, .bg-trasp
@@ -14,9 +15,10 @@ td
     @extend .mpz, .fg-mid
 
 // INLINE
+// ------------------------------
 code.highlighter-rouge
   color: var(--yel-light)
-  @extend .bg-gry-dark, .border-radius-big
+  @extend .border-radius-big
 
 // BLOCKS
 // Fenced, kramdown, indented:
@@ -25,14 +27,14 @@ code.highlighter-rouge
 // figure.highlight > pre > code
 div.highlighter-rouge
   @extend .mpz, .display-table, .border, .border-radius-big
-  padding: .4em .6em
+  padding: .5em
 
 .columns div div.highlighter-rouge
   @extend .block
 
 [class*='highlight']
   pre
-    @extend .mz
+    @extend .mz, .fs-small
     white-space: pre-wrap
     line-height: 1
     letter-spacing: -0.2px

@@ -1,8 +1,29 @@
-$shades: ('black': hsl(0, 0%,  3%), 'subtle': hsl(0, 0%, 15%), 'dim': hsl(0, 0%, 48%), 'mid': hsl(0, 0%, 58%), 'white': hsl(0, 0%, 90%)) !default
+$shades: ('black': hsl(0, 0%, 2%), 'dark': hsl(0, 0%, 5%), 'subtle': hsl(0, 0%, 12%), 'dim': hsl(0, 0%, 48%), 'mid': hsl(0, 0%, 58%), 'white': hsl(0, 0%, 90%)) !default
 
 $colors: ('blu': hsl(210, 58%, 30%), 'red': hsl(340, 65%, 30%), 'ora': hsl(20, 60%, 30%), 'sky': hsl(226, 60%, 37%), 'cya': hsl(190, 60%, 37%), 'for': hsl(173, 60%, 25%), 'pin': hsl(315, 34%, 34%), 'vio': hsl(260, 36%, 34%), 'gre': hsl(129, 25%, 35%), 'yel': hsl(45, 70%, 30%), 'gry': hsl(0, 0%, 30%)) !default
-$neon: ('dodg': dodgerblue, 'bluu': #06b6ef, 'aqua': #5bc4bf, 'jade': #48b685, 'cora': #f99b15, 'suns': #ef6155, 'ruby': #f271c0 )
-$link: map-get($map: $neon, $key: 'bluu')
+$neon: ('dodg': dodgerblue, 'blue': #06b6ef, 'aqua': #5bc4bf, 'jade': #48b685, 'cora': #f99b15, 'gold': #ffcc4d, 'suns': #ef6155, 'ruby': #f271c0 ) !default
+
+// Color Scheme
+$color-scheme: 'dark' !default
+
+// Light and Dark
+$dark-lightness: 8% !default
+$light-lightness: 85% !default
+
+// Links
+$link: map-get($map: $neon, $key: 'dodg') !default
+// nav a[aria-current='page']
+$link-current: map-get($map: $neon, $key: 'gold') !default
+
+// Screen sizes
+$screens: ('mobile', 'tablet', 'desktop', 'fullscreen') !default
+// Sidebar width
+$nav-side-width: (100px, 180px, 250px, 350px) !default
+// Popover max width
+$popover-max-width: (100%, 60ch, 70ch, 80ch) !default
+// Wrapper max width
+$wrapper-max-width: (100%, 100%, 1000px, 1800px) !default
+$header-height: 70px !default
 
 // Fonts
 $font-family: system-ui !default
@@ -13,5 +34,5 @@ $font-size-small: 17px !default
 $font-size-smaller: 16px !default
 $font-size-up: 22px !default
 
-$border-radius: .1em
-$border-radius-big: .3em
+$border-radius: .1em !default
+$border-radius-big: .3em !default

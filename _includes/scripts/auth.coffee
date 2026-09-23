@@ -1,20 +1,20 @@
 logout = (token) ->
   html.addClass('unlogged').removeClass 'logged admin guest'
-  storage.clear()
   if token then log 'Logged out'
   return
 
-login_form.on 'submit', ->
+doc.on 'submit', '#login-form', ->
   form = $ @
   field = form.serializeArray()[0]
-  login_popover[0].hidePopover()
+  $('#login-popover')[0].hidePopover()
   form.trigger 'reset'
   if field['value'] and field['name'] is 'login-token'
     bootstrap field['value']
   return
 
 # Logout button
-$('#logout-button').on 'click', -> logout storage.get 'token'
+doc.on 'click', '#logout-button', ->
+  logout storage.get 'token'
 
 #
 # AUTH FUNCTIONS
@@ -28,6 +28,8 @@ get_auth = (token) -> $.get
     storage.set 'user', user.login
     return # End get_auth done
   error: (request) ->
-    log "Auth error", 'bg-red-dark'
+    if request.status is 401
+      storage.clear()
+      log "Bad credentials", 'bg-red-dark'
     do logout
     return

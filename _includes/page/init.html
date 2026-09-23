@@ -11,7 +11,10 @@
 {% if sort_by == 'date' %}{% assign docs = docs | reverse %}{% endif %}
 {%- assign repo = site.github.public_repositories | where: "full_name", site.github.repository_nwo | first -%}
 {%- assign id = repo.id -%}
+{%- assign dir = repo.dir -%}
+{%- assign url = repo.url -%}
 {%- assign fork = repo.fork -%}
+{%- assign branch = repo.default_branch -%}
 {%- assign pushed_at = repo.pushed_at | date_to_xmlschema -%}
 {%- assign created_at = repo.created_at | date_to_xmlschema -%}
 {%- assign language = page.language | default: site.language | default: "en" -%}
@@ -32,7 +35,9 @@
 | Title | `{{ page.title }}` |
 | Source | <a href='{% include widgets/links/github_url.html path=page.path %}'>On GitHub</a> |
 | Path | `{{ page.path }}` |
-| Id | {% if  page.id %}`{{ page.id }}`{% endif %} |
+| Id | {% if page.id %}`{{ page.id }}`{% endif %} |
+| Dir | {% if page.dir %}`{{ page.dir }}`{% endif %} |
+| Url | {% if page.url %}`{{ page.url }}`{% endif %} |
 | Slug | {% if page.slug %}`{{ page.slug }}`{% endif %} |
 | Collection | {% if page.collection %}`{{ page.collection }}`{% endif %} |
 | Categories | {% if page.categories != nil and page.categories.size != 0 %}`{{ page.categories | join: ', ' }}`{% endif %} |
@@ -51,6 +56,7 @@
 | Source | <a href='{% include widgets/links/github_url.html %}'>On GitHub</a> |
 | Fork | `{{ fork }}` |
 | Forks | `{{ repo.forks }}` |
+| Default Branch | `{{ branch }}` |
 | Contributors | `{{ repo.contributors.size }}` |
 | Created_at | <code>{% include widgets/datetime.html datetime=created_at %}</code> |
 | Pushed_at | <code>{% include widgets/datetime.html datetime=pushed_at %}</code> |

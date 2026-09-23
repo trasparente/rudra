@@ -1,0 +1,1 @@
+<div id='branding'>{% assign logo_path = site.static_files | where_exp: "item", "item.path contains 'logo.png'" | map: 'path' | first %}{% if logo_path and page.logo %}<img src='{{ logo_path | absolute_url }}' class='logo'>{% endif %}</div>

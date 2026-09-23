@@ -1,3 +1,4 @@
+// SPACING
 .mz
   margin: 0
 .pz
@@ -14,9 +15,27 @@
   display: inline-block
 .hidden
   display: none
+.flex
+  display: flex
+  justify-content: space-between
+.fg1
+  flex-grow: 1
+// Has Gap 1
+.columns
+  @extend .flex
+  flex-direction: column
+  flex-wrap: wrap
+  gap: 1em
+  div
+    flex-grow: 1
+.pf
+  position: fixed
+.ps
+  position: sticky
 .wrapper
   margin: 0 auto
   padding: 1.2em 1.5em
+  max-width: var(--wrapper-max-width)
 
 .no-appearance
   appearance: none
@@ -25,12 +44,6 @@
   appearance: menulist
   -webkit-appearance: menulist
 
-.flex
-  display: flex
-  justify-content: space-between
-.columns
-  @extend .flex
-  flex-wrap: wrap
-  gap: 1em
-  div
-    flex-grow: 1
+// CURSOR
+.pointer
+  cursor: pointer

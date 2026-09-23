@@ -13,11 +13,11 @@
   onfocus='focus()'
   onblur='blur()'
   class='{{ page.class | append: " " | append: collection.class | strip }}'>
-<div id='top'></div>
+<div id='topper'></div>
 {%- include page/header.html -%}
 {%- include page/main.html -%}
 {%- include page/footer.html -%}
-{%- include page/popover.html -%}
-<div id='bottom'></div>
+{%- include page/bottom.html -%}
+<div id='sotte'></div>
 </body>
 </html>

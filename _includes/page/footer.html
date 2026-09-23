@@ -1,11 +1,21 @@
 <footer>
   <div>
     <nav>
-      <a href='#' class='prevent' data-popover='meta' title='Page and repository info'>INFO</a>
-      <a href='{{ "assets/data.json" | absolute_url }}' title='data folder JSON' target='_blank'>DATA</a>
+      <a href='#' class='prevent' data-popover='info' title='Page repository and Jekyll info'>INFO</a>
+      <a href='#' class='prevent' data-popover='status' title='Page status'>STATUS</a>
     </nav>
     <nav>
-      <a href='#top'>Top</a>
+      <!-- <a href='#top'>Top</a> -->
     </nav>
+    <!-- INFO POPOVER -->
+    <div id='info' popover>
+      {% include widgets/links/popclose.html %}
+      {% include page/info.html %}
+    </div>
+    <!-- STATUS POPOVER -->
+    <div id='status' popover>
+      {% include widgets/links/popclose.html %}
+      {% include page/status.html %}
+    </div>
   </div>
 </footer>

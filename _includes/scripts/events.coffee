@@ -2,10 +2,21 @@
 doc.on 'click', 'a.prevent', (e) -> e.preventDefault()
 doc.on 'button', 'button.prevent', (e) -> e.preventDefault()
 doc.on 'submit', 'form.prevent', (e) -> e.preventDefault()
-# Login button popover
-doc.on 'click', '#login-button', -> $('#login-popover')[0].showPopover()
-# Dismiss bottom popovers
-doc.on 'click', '#bottom .popover', -> $(@).remove()
+
+# POPOVER
+# -------------------------
+# Dismiss top-bottom popovers
+doc.on 'click', '#bottom .popover, #topper .popover', -> $(@).remove()
+
+# Activate general click popover [data-popover='id']
+doc.on "click", '[data-popover]', ->
+  popover = $(@).attr 'data-popover'
+  $("##{ popover }")[0].showPopover()
+  return
+# Activate popclose links
+doc.on 'click', '[data-popclose]', ->
+  $(@).parents('[popover]')[0].hidePopover()
+
 # Eye button, password to text toggle
 doc.on 'click', '[data-eye]', ->
   el = $ @
@@ -36,7 +47,7 @@ if document.hasFocus() then do focus else do blur
 @onhashchange = -> console.log 'onhashchange', window.location.hash
 
 # RESIZE EVENT
-# Add class `fullscreen` and `mobile` if the case
+# Manage class `.fullscreen .mobile .desktop`
 # Called from BODY attribute
 @resize = ->
   # Fullscreen
@@ -54,6 +65,7 @@ if document.hasFocus() then do focus else do blur
     else html.addClass('desktop not-mobile not-tablet').removeClass 'mobile tablet not-desktop'
 
   # Check document SHOTER than window
+  # Doesnt work if `<main>` has `flex-grow: 1`
   if window.innerHeight > document.body.scrollHeight
     html.addClass 'shorter'
   else html.removeClass 'shorter'
@@ -66,8 +78,8 @@ do resize
 # Add `html.scrolled` when scroll > win height
 win.scroll () ->
   if win.scrollTop() > win.height() / 5
-    html.addClass 'scrolled'
-  else html.removeClass 'scrolled'
+    html.addClass('scrolled').removeClass 'unscrolled'
+  else html.addClass('unscrolled').removeClass 'scrolled'
   # Apply sticky class to ToC
   if $('details.toc')[0]
     el = $('details.toc')[0]

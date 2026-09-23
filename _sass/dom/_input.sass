@@ -3,35 +3,48 @@ input, output, textarea
   @extend .no-appearance
 select
   @extend .menulist
-input, select, output, textarea
+input:not([type='submit']), select, textarea
   @extend .inherit, .button
-  background: var(--gry-dark)
-  border-left-width: 3px !important
+  border-left-width: 5px !important
 
   // States
   &:focus
+    @extend .bg-dark
     outline: none
-    background: var(--bg)
-  &:active
+  &:enabled:active
     color: inherit !important
   &:valid
     @extend .valid
   &:not(:valid)
     @extend .not-valid
 
-input[type='submit'],
-input[type='reset'],
-input[type='button']
+// Output
+output
+  @extend .fg-dim
+  padding: .5em .7em
+
+// Commands
+input:is([type='submit'], [type='reset'], [type='button'])
   @extend .button
 input[type='reset']
   @extend .no-border
-  // &:focus
-  //   color: var(--fg) !important
 
 // Text fields
-input:is([type="text"], [type="email"], [type="date"], [type="datetime-local"], [type="number"], [type="password"], [type="color"]):not([type="radio"], [type="checkbox"]),
-select, textarea
+input:is([type="text"], [type="email"], [type="date"], [type="datetime-local"], [type="number"], [type="password"], [type="color"]), textarea
   min-width: 13em
+select
+  min-width: 14.55em
+
+// SPECIALS
+#counter
+  min-width: auto !important
+  max-width: 2em !important
+  border: 0
+  appearance: textfield
+  -moz-appearance: textfield
+  pointer-events: none
+  &:focus
+    @extend .bg
 
 // Placeholder
 ::placeholder, ::-moz-placeholder, ::-webkit-input-placeholder

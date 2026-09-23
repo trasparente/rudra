@@ -3,7 +3,8 @@
 # Rudra
 
 - `sass`
-  - inverse variables
+  - inverse variables, labels
 - `widgets`
   - hud, fullscreen widgets (top, bottom)
+- `data`
   - translator (dictionary + abbreviation)

@@ -1,12 +1,13 @@
 a, a:visited, .link
-  color: var(--mid)
-  cursor: pointer
+  @extend .pointer, .fg-link
   text-decoration: none
   outline: none
-  &[aria-current='page'], .active
-    color: var(--link)
-    border-color: var(--subtle) !important
-  &:hover, &:focus
-    color: var(--fg)
-  &:active
-    color: var(--mid) !important
+  &:focus
+    opacity: .6
+  // Footnotes arrows
+  &[role="doc-backlink"]:hover,
+  &.link-hover-fg:hover
+    @extend .fg
+  &.link-hover-underline:hover
+    text-decoration: underline
+
