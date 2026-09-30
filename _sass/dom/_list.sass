@@ -6,7 +6,8 @@ ul, dd
   margin-inline: 0
 
 li, dd
-  @extend .fs-mid
+  &, &::marker
+    @extend .fs-mid, .fg-mid
 li + li, dd + dt, dt + dd
   margin-top: .2em
 li ul

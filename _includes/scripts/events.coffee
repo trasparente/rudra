@@ -65,8 +65,9 @@ if document.hasFocus() then do focus else do blur
     else html.addClass('desktop not-mobile not-tablet').removeClass 'mobile tablet not-desktop'
 
   # Check document SHOTER than window
-  # Doesnt work if `<main>` has `flex-grow: 1`
-  if window.innerHeight > document.body.scrollHeight
+  # document.querySelector("main").offsetHeight
+  # if window.innerHeight > document.body.scrollHeight
+  if window.innerHeight > $('main')[0].offsetHeight
     html.addClass 'shorter'
   else html.removeClass 'shorter'
   return # End resize

@@ -7,6 +7,20 @@ order: 5
 - [Ghostty](https://ghostty.org/docs/install/build)
 - [HTML roles](https://www.w3.org/WAI/ARIA/apg/practices/structural-roles/#when_to_use_structural_roles)
 
+## Shades
+
+Background `.bg-<shade>`{:.css}
+
+{% assign shade = 'black,dark,subtle,grey,dim,mid,white' | split: ',' %}
+<div class='demo-shades'>{%- for s in shade -%}{%- include widgets/demo.html shade=s %}{%- endfor -%}</div>
+
+## Colors and Borders
+
+Foreground and borders `.fg-<shade> .bc-<shade>`{:.css}
+
+{% assign shade = 'black,dark,subtle,grey,dim,mid,white' | split: ',' %}
+<div class='demo-borders'>{%- for s in shade -%}{%- include widgets/demo.html border=s %}{%- endfor -%}</div>
+
 ## Colors
 
 Eleven three letters `var(--(xxx)[-<dark/light>])`{:.language-c}

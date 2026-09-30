@@ -2,7 +2,6 @@
 \:popover-open,
 .popover
   @extend .bg, .border, .border-radius-big, .fs-mid, .link-hover-underline
-  border-width: 2px
   max-width: var(--popover-max-width)
   max-height: 85vh
   cursor: default
@@ -16,9 +15,6 @@
   a, a:visited, .link
     &:not([data-popclose])
       @extend .link-hover-underline
-  // &:hover
-  //   @extend .border
-  //   border-width: 2px
   &::backdrop
     @extend .bg-subtle
   table

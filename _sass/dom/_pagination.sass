@@ -9,9 +9,11 @@
     &::after
       @extend .fs-up
       font-weight: normal
-  a[rel='next']::before
-    content: "\2039"
-    margin-right: .3em
-  a[rel='prev']::after
-    content: "\203a"
-    margin-left: .3em
+    &[rel='next']::before
+      content: "\2039"
+      margin-right: .3em
+    &[rel='prev']
+      border-inline-width: 1px 5px !important
+      &::after
+        content: "\203a"
+        margin-left: .3em
