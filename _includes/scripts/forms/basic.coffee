@@ -21,7 +21,7 @@ $('form').each ->
 # checkFile
 # -------------------------
 checkFile = (file_url, out) -> $.get
-  url: file_url
+  url: contentsUrl file_url
   # arguments: Object, 'error', 'Not Found'
   error: (request, status , error) ->
     if request.status is 404
@@ -31,8 +31,10 @@ checkFile = (file_url, out) -> $.get
     saveFile file_url, out, {sha: data.sha}
     return # End Overwrite
 
+contentsUrl = (file_url) -> "#{ github_repo_url }/contents/#{ file_url }"
+
 saveFile = (file_url, file, sha) -> $.ajax
-  url: file_url
+  url: contentsUrl file_url
   method: 'PUT'
   data: JSON.stringify $.extend {
     message: "RUDRA #{ file_url }"

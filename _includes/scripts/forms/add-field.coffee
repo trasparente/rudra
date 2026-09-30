@@ -48,7 +48,7 @@ if f_1.length and f_2.length then do ->
       return
     unless file_url.endsWith '.json'
       out = jsyaml.dump out
-    checkFile file_url, out
+    checkFile '_data/' + file_url, out
     return
 
   # Source Form
