@@ -8,6 +8,9 @@ html
   // Request
   &.ajax #branding
     opacity: .6
+  // Updates
+  &.behind #branding
+    filter: saturate(18%)
 
   // Toc sticky
   &:has(#content .toc)
@@ -40,9 +43,14 @@ html
   .only-child:not(:only-child)
     @extend .hidden
 
-  // Invisibility
+  // AUTH LEVEL FADE-IN
   &:not(.logged) .guest,
   &:not(.logged) .admin,
   &:not(.admin) .admin,
   &:not(.guest) .guest
-    visibility: hidden
+    opacity: 0
+  &.logged .guest,
+  &.logged .admin,
+  &.admin .admin,
+  &.guest .guest
+    @extend .fadein

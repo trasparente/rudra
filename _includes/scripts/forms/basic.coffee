@@ -16,6 +16,8 @@ $('form').each ->
   form.on 'change', ->
     form.removeClass 'submit reset'
     return # End Submit
+  # Prevent session caching
+  form.trigger 'reset'
   return # End Forms
 
 # checkFile

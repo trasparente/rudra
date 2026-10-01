@@ -17,7 +17,7 @@ doc.on 'ajaxStop', () -> do remove_ajax
 # doc.on 'ajaxStop', () -> setTimeout remove_ajax, 100
 doc.on 'ajaxError', (e,r,x) ->
   # message = "#{r.responseJSON?.message || 'error'}"
-  log x.type, r.status, short_url x
+  log [x.type, r.status, short_url x].join ' '
   return
 doc.on 'ajaxSuccess', (e,r,x) -> console.log x.type, r.status, short_url x
 

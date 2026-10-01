@@ -3,8 +3,6 @@ f_2 = $ '#add-field-form'
 
 # When both present
 if f_1.length and f_2.length then do ->
-  # Prevent session caching
-  f_1.trigger 'reset'
   edit = false
   name = $ '#name', f_2
   destination = $ '#fields', f_1
