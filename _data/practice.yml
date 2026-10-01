@@ -1,0 +1,7 @@
+date:
+  type: date
+  value: today
+  required: 'on'
+serie:
+  type: text
+  required: 'on'
